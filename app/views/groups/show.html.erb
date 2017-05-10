@@ -4,12 +4,14 @@
     <span class="pull-right">
       <% if current_user && current_user.is_member_of?(@group) %>
         <label class="label label-success">member of group</label>
+          <%= link_to("Quit Group", quit_group_path(@group), method: :post, class: "btn btn-info") %>
       <% else %>
-        <label class="label label-warning">is not member of group</label>
+        <label class="label label-warning">is not a member of group</label>
+          <%= link_to("Join Group", join_group_path(@group), method: :post, class: "btn btn-info") %>
       <% end %>
     </span>
 
-    <%= link_to("Write a post", new_group_post_path(@group), class: "btn btn-info pullright")%>
+    <%= link_to("Write a post", new_group_post_path(@group), class: "btn btn-info pull-right")%>
     <% if current_user && current_user == @group.user %>
     <%= link_to("Edit", edit_group_path(@group), class: "btn btn-info pull-right") %>
     <% end %>
